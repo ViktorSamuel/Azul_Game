@@ -3,7 +3,7 @@ package sk.uniba.fmph.dcs;
 import java.util.Optional;
 
 public class Board implements BoardInterface{
-    public Points points;
+    private Points points;
     private PatternLineInterface[] patternLines;
     private WallLineInterface[] wallLines;
     private FloorInterface floor;
@@ -59,5 +59,10 @@ public class Board implements BoardInterface{
 
         stringBuilder.append(floor.state());
         return stringBuilder.toString();
+    }
+
+    @Override
+    public Points getPoints() {
+        return points;
     }
 }
