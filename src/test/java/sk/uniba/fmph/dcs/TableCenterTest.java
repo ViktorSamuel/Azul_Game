@@ -15,7 +15,7 @@ public class TableCenterTest {
 
     @Test
     public void test_table_centre() {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 100; i++) {
             assertFalse("There should be the STARTING_PLAYER tile", tableCenter.isEmpty());
             assertEquals("There should be the STARTING_PLAYER tile", "S", tableCenter.state());
             tableCenter.add(new Tile[]{Tile.RED, Tile.RED,});
@@ -34,6 +34,10 @@ public class TableCenterTest {
             assertEquals("We expect RRBBRR", "RRBBRR", tableCenter.state());
             assertEquals(new Tile[]{Tile.RED, Tile.RED, Tile.RED, Tile.RED}, tableCenter.take(Tile.RED.ordinal()));
             assertEquals("We expect BB", "BB", tableCenter.state());
+
+            tableCenter.startNewRound();
+            assertEquals("We expect S", "S", tableCenter.state());
+            assertEquals(new Tile[]{Tile.STARTING_PLAYER}, tableCenter.take(Tile.RED.ordinal()));
 
             tableCenter.startNewRound();
         }
