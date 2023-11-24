@@ -1,7 +1,6 @@
 package sk.uniba.fmph.dcs;
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class TableArea implements TableAreaInterface {
     private ArrayList<TyleSource> tyleSources;
