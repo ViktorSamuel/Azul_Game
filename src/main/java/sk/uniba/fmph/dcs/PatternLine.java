@@ -1,16 +1,16 @@
 package sk.uniba.fmph.dcs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 public class PatternLine implements PatternLineInterface{
     private int capacity;
     private ArrayList<Tile> tiles;
-    private Floor floor;
-    private WallLine wallLine;
-    private UsedTiles usedTiles;
-    public PatternLine(int capacity, Floor floor, WallLine wallLine, UsedTiles usedTiles){
+    private FloorInterface floor;
+    private WallLineInterface wallLine;
+    private UsedTilesGiveInterface usedTiles;
+    private Tile color = null;
+    public PatternLine(int capacity, FloorInterface floor, WallLineInterface wallLine, UsedTilesGiveInterface usedTiles){
         this.floor = floor;
         this.wallLine = wallLine;
         this.capacity = capacity;
@@ -18,10 +18,16 @@ public class PatternLine implements PatternLineInterface{
         tiles = new ArrayList<Tile>();
     }
     public void put(Tile[] tiles){
-        boolean canPut = wallLine.canPutTile(tiles[0]);
+        boolean canPut = wallLine.canPutTile(tiles[0]) && (color == null || color == tiles[0]);
         Collection<Tile> redundant = new ArrayList<Tile>();
         for(Tile tile : tiles){
-            if(canPut && this.tiles.size() < capacity) this.tiles.add(tile);
+            if(tile == null) continue;
+            if(canPut && this.tiles.size() < capacity) {
+                if (color == null) {
+                    color = tile;
+                }
+                this.tiles.add(tile);
+            }
             else redundant.add(tile);
         }
         floor.put(redundant);
@@ -30,12 +36,15 @@ public class PatternLine implements PatternLineInterface{
         int points = 0;
         if(tiles.size() == capacity){
             points =  wallLine.putTile(tiles.remove(tiles.size()-1)).getValue();
-            usedTiles.give(tiles.toArray(new Tile[tiles.size()]));
+            usedTiles.give(tiles);
             tiles = new ArrayList<Tile>();
+            color = null;
         }
         return new Points(points);
     }
     public String state(){
-        return "Capacity: " + capacity + " | Current state: " + tiles.size() + " | Color: " + tiles.get(0).toString() + "\n";
+        String state = "EMPTY";
+        if(color != null) state = tiles.get(0).toString();
+        return "Capacity: " + capacity + " | Current state: " + tiles.size() + " | Color: " + state + "\n";
     }
 }
