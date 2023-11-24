@@ -88,5 +88,12 @@ public class PatternLineTest {
         assertEquals("BBRRRRRRSSGGSB", floor.state());
         assertEquals(0, patternLine.finishRound().getValue());
         assertEquals("UsedTiles{count=8, usedTiles=[R, R, R, R, G, G, G, G]}", usedTiles.state());
+
+        // Test pattern line with just starting player
+        patternLine.put(new Tile[]{Tile.STARTING_PLAYER});
+        assertEquals("Capacity: 5 | Current state: 1 | Color: I\n", patternLine.state());
+        assertEquals("BBRRRRRRSSGGSBS", floor.state());
+        assertEquals(0, patternLine.finishRound().getValue());
+        assertEquals("UsedTiles{count=8, usedTiles=[R, R, R, R, G, G, G, G]}", usedTiles.state());
     }
 }
