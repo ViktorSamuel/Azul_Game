@@ -2,14 +2,14 @@ package sk.uniba.fmph.dcs;
 
 import java.util.Random;
 
-public class Bag{
+public class Bag implements BagInterface {
     private int capacity = 100;
     private int colourCount = Tile.values().length-1;
     private int colourCapacity = capacity/colourCount;
     private int[] tiles;
-    private UsedTiles usedTiles;
+    private UsedTilesTakeAllInterface usedTiles;
 
-    public Bag(UsedTiles usedTiles){
+    public Bag(UsedTilesTakeAllInterface usedTiles){
         this.usedTiles = usedTiles;
         tiles = new int[Tile.values().length-1];
     }
@@ -28,7 +28,7 @@ public class Bag{
             tiles[i] = colourCapacity - counts[i];
         }
     }
-
+    @Override
     public Tile[] take(int count){
         fill();
         Tile[] taken = new Tile[count];
@@ -44,7 +44,7 @@ public class Bag{
         }
         return taken;
     }
-
+    @Override
     public String state(){
         StringBuilder state = new StringBuilder();
         for(int i = 0; i < tiles.length; i++){

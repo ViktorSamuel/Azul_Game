@@ -8,10 +8,32 @@ import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+class FakeUsedTilesTake implements UsedTilesTakeAllInterface {
+    private Collection<Tile> used;
+
+    public FakeUsedTilesTake() {
+        used = new ArrayList<>();
+    }
+
+    @Override
+    public Tile[] takeAll() {
+        Tile[] taken = new Tile[used.size()];
+        int i = 0;
+        for(Tile tile : used)
+            taken[i++] = tile;
+        used.clear();
+        return taken;
+    }
+
+    public void give(Collection<Tile> tiles) {
+        used.addAll(tiles);
+    }
+}
+
 public class BagTest {
     @Test
     public void testBagSize() {
-        UsedTiles usedTiles = new UsedTiles();
+        FakeUsedTilesTake usedTiles = new FakeUsedTilesTake();
         Bag bag = new Bag(usedTiles);
 
         assertEquals("R: 20 G: 20 I: 20 B: 20 L: 20 \n", bag.state());
