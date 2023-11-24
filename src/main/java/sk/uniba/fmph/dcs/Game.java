@@ -21,9 +21,8 @@ public class Game implements GameInterface {
         }
         Tile[] tiles = tableArea.take(sourceId, idx);
         if (tiles.length == 0) return false;
-        for(Tile t : tiles){
-            if (t == Tile.STARTING_PLAYER) startingPlayerId = playerId;
-        }
+        if (tiles[tiles.length-1] == Tile.STARTING_PLAYER) startingPlayerId = playerId;
+
         boards[playerId].put(destinationIxd, tiles);
         currentPlayerId = (currentPlayerId + 1) % boards.length;
 
