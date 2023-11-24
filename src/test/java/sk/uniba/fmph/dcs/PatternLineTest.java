@@ -66,5 +66,27 @@ public class PatternLineTest {
         assertEquals("BBRRRRRR", floor.state());
         assertEquals(2, patternLine.finishRound().getValue());
         assertEquals("UsedTiles{count=8, usedTiles=[R, R, R, R, G, G, G, G]}", usedTiles.state());
+        assertEquals("Capacity: 5 | Current state: 0 | Color: EMPTY\n", patternLine.state());
+
+        // Test pattern line with starting player tile
+        patternLine.put(new Tile[]{Tile.YELLOW, Tile.STARTING_PLAYER});
+        assertEquals("Capacity: 5 | Current state: 1 | Color: I\n", patternLine.state());
+        assertEquals("BBRRRRRRS", floor.state());
+        assertEquals(0, patternLine.finishRound().getValue());
+        assertEquals("UsedTiles{count=8, usedTiles=[R, R, R, R, G, G, G, G]}", usedTiles.state());
+
+        // Test pattern line with starting player tile and color already in wall line
+        patternLine.put(new Tile[]{Tile.GREEN, Tile.GREEN, Tile.STARTING_PLAYER});
+        assertEquals("Capacity: 5 | Current state: 1 | Color: I\n", patternLine.state());
+        assertEquals("BBRRRRRRSSGG", floor.state());
+        assertEquals(0, patternLine.finishRound().getValue());
+        assertEquals("UsedTiles{count=8, usedTiles=[R, R, R, R, G, G, G, G]}", usedTiles.state());
+
+        // Test pattern line with starting player tile and different color than is in pattern line
+        patternLine.put(new Tile[]{Tile.BLUE, Tile.STARTING_PLAYER});
+        assertEquals("Capacity: 5 | Current state: 1 | Color: I\n", patternLine.state());
+        assertEquals("BBRRRRRRSSGGSB", floor.state());
+        assertEquals(0, patternLine.finishRound().getValue());
+        assertEquals("UsedTiles{count=8, usedTiles=[R, R, R, R, G, G, G, G]}", usedTiles.state());
     }
 }
