@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class TableCenter extends TyleSource {
+public class TableCenter extends TyleSource implements TableCenterInterface{
 
     /** STARTING_PLAYER=0, RED=1, GREEN=2, YELLOW=3, BLUE=4, BLACK=5 */
     private final HashMap<Integer, Tile> idxToTile;
@@ -55,6 +55,7 @@ public class TableCenter extends TyleSource {
         return toReturn.toString();
     }
 
+    @Override
     public void add(Tile[] newTiles) {
         tiles.addAll(new ArrayList<>(Arrays.asList(newTiles)));
     }

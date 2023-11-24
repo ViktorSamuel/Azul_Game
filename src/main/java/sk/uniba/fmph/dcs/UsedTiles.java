@@ -2,7 +2,7 @@ package sk.uniba.fmph.dcs;
 
 import java.util.*;
 
-public class UsedTiles implements UsedTilesGiveInterface {
+public class UsedTiles implements UsedTilesGiveInterface, UsedTilesTakeAllInterface {
     private final List<Tile> usedTiles; //List to hold used tiles
 
     public UsedTiles() {
@@ -25,6 +25,7 @@ public class UsedTiles implements UsedTilesGiveInterface {
     }
 
     // Method to retrieve and remove all Tile objects from the usedTiles list.
+    @Override
     public Tile[] takeAll() {
         Tile[] tilesArray = new Tile[this.usedTiles.size()];
         tilesArray = this.usedTiles.toArray(tilesArray);
