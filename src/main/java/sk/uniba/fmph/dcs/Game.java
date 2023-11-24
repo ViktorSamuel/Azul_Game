@@ -20,6 +20,7 @@ public class Game implements GameInterface {
             return false;
         }
         Tile[] tiles = tableArea.take(sourceId, idx);
+        if (tiles.length == 0) return false;
         for(Tile t : tiles){
             if (t == Tile.STARTING_PLAYER) startingPlayerId = playerId;
         }
