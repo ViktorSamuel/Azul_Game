@@ -23,18 +23,6 @@ public class UsedTiles implements UsedTilesGiveInterface {
             this.usedTiles.add(tile);
         }
     }
-//    public void give(Tile[] tiles) {
-//        if (tiles == null) {
-//            throw new IllegalArgumentException("Cannot add null array of tiles.");
-//        }
-//        for (Tile tile : tiles) {
-//            // Check if the current tile is the STARTING_PLAYER tile
-//            if (tile == Tile.STARTING_PLAYER) {
-//                continue;
-//            }
-//            this.usedTiles.add(tile);
-//        }
-//    }
 
     // Method to retrieve and remove all Tile objects from the usedTiles list.
     public Tile[] takeAll() {
