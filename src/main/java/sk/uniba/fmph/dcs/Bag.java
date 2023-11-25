@@ -28,6 +28,9 @@ public class Bag {
 
     //  Draw a number count tiles from the bag
     public List<Tile> take(int count){
+        if (count < 0) {
+            throw new IllegalArgumentException("Cannot take a negative number of tiles");
+        }
         List<Tile> drawnTiles = new ArrayList<>();
         for (int i = 0; i < count && !this.tiles.isEmpty(); i++) {
             drawnTiles.add(this.tiles.remove(this.tiles.size() - 1));
