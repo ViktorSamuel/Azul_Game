@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -29,23 +30,23 @@ public class BagTest {
     @Test
     public void testTakeNormalCase() {
         int numberOfTilesToTake = 5;
-        List<Tile> tiles = bag.take(numberOfTilesToTake);
+        List<Tile> tiles = Arrays.asList(bag.take(numberOfTilesToTake));
         assertEquals(numberOfTilesToTake, tiles.size());
     }
 
     @Test
     public void testTakeEmptyBag() {
-        List<Tile> takenTiles = bag.take(totalTilesCount); // Take all the tiles
+        List<Tile> takenTiles = Arrays.asList(bag.take(totalTilesCount)); // Take all the tiles
         assertEquals(totalTilesCount, takenTiles.size()); // Check if the number of taken tiles is correct
         assertTrue(bag.isEmpty()); // Then check if the bag is empty
 
-        List<Tile> tilesAfterEmptying = bag.take(1); // Try taking more tiles
+        List<Tile> tilesAfterEmptying = Arrays.asList(bag.take(1)); // Try taking more tiles
         assertTrue(tilesAfterEmptying.isEmpty()); // This should be empty
     }
 
     @Test
     public void testTakeMoreTilesThanAvailable() {
-        List<Tile> tiles = bag.take(totalTilesCount + 1); // Attempt to take more than the total number of tiles
+        List<Tile> tiles = Arrays.asList(bag.take(totalTilesCount + 1)); // Attempt to take more than the total number of tiles
         assertEquals(totalTilesCount, tiles.size()); // Only the total number should be returned
     }
 
@@ -60,7 +61,7 @@ public class BagTest {
     public void testFillMethod() {
         // Empty the bag first
         List<Tile> allTiles = IntStream.range(0, totalTilesCount)
-                .mapToObj(i -> bag.take(1))
+                .mapToObj(i -> Arrays.asList(bag.take(1)))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
         assertTrue(bag.isEmpty());
