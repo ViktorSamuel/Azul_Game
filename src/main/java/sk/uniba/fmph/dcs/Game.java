@@ -49,6 +49,14 @@ public class Game implements GameInterface {
         return true;
     }
 
+    public boolean isGameOver(){
+        return endGame;
+    }
+
+    public int getCurrentPlayerId(){
+        return currentPlayerId;
+    }
+
     public void setGameObserver(ObserverInterface newGameObserver){
         this.gameObserver.registerObserver(newGameObserver);
     }
