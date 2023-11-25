@@ -5,18 +5,23 @@ public class Game implements GameInterface {
     private int startingPlayerId;
     private TableAreaInterface tableArea;
     private BoardInterface[] boards;
+    private GameObserverInterface gameObserver;
+    private boolean endGame;
 
-    public Game(BoardInterface[] boards, TableAreaInterface tableArea){
+    public Game(BoardInterface[] boards, TableAreaInterface tableArea, GameObserverInterface gameObserver){
         this.boards = boards;
         this.tableArea = tableArea;
         currentPlayerId = startingPlayerId = 0;
+        endGame = false;
+        this.gameObserver = gameObserver;
     }
 
     @Override
     public boolean take(int playerId, int sourceId, int idx, int destinationIxd) {
         if (playerId != currentPlayerId ||
                 idx < 1 || idx > 5 ||
-                destinationIxd < 0 || destinationIxd > 4) {
+                destinationIxd < 0 || destinationIxd > 4 ||
+                endGame) {
             return false;
         }
         Tile[] tiles = tableArea.take(sourceId, idx);
@@ -27,7 +32,6 @@ public class Game implements GameInterface {
         currentPlayerId = (currentPlayerId + 1) % boards.length;
 
         if (tableArea.isRoundEnd()){
-           boolean endGame = false;
             for (int i = 0; i < boards.length; i++){
                 if(boards[i].finishRound() == FinishRoundResult.GAME_FINISHED) endGame = true;
             }
@@ -35,6 +39,8 @@ public class Game implements GameInterface {
             if (endGame) {
                 for (int i = 0; i < boards.length; i++){
                     boards[i].endGame();
+                    System.out.println("Player " + i + " score: " + boards[i].getPoints() + "\n" +
+                            boards[i].state());
                 }
             }
             else {
@@ -43,5 +49,13 @@ public class Game implements GameInterface {
             }
         }
         return true;
+    }
+
+    public void setGameObserver(ObserverInterface newGameObserver){
+        this.gameObserver.registerObserver(newGameObserver);
+    }
+
+    public void removeGameObserver(ObserverInterface gameObserver){
+        this.gameObserver.cancelObserver(gameObserver);
     }
 }
