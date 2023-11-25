@@ -44,15 +44,17 @@ public class WallLineTest {
     @Test
     public void test_wallLines(){
         for (int i = 0; i < 5; i++) {
-            assertEquals("Floor should be empty when created.", "     ", wallLines[i].state());
+            assertEquals("Floor should be empty when created.", "-----", wallLines[i].state());
             assertEquals("The output of canPut should be true", true, wallLines[i].canPutTile(Tile.BLACK));
         }
         assertEquals("Method should add 1 point", 1, wallLines[2].putTile(Tile.BLACK).getValue());
         assertEquals("The output of canPut should be false", false, wallLines[2].canPutTile(Tile.BLACK));
-        assertEquals("WallLine state() test", " L   ", wallLines[2].state());
+        assertEquals("WallLine state() test", "-L---", wallLines[2].state());
         assertEquals("Method should add 2 points", 2, wallLines[1].putTile(Tile.RED).getValue());
+        assertEquals("WallLine state() test", "-R---", wallLines[1].state());
         wallLines[0].putTile(Tile.BLACK);
         assertEquals("Method should add 1 point", 1, wallLines[0].putTile(Tile.RED).getValue());
+        assertEquals("R---L", wallLines[0].state());
         assertEquals("Method should add 5 points", 5, wallLines[0].putTile(Tile.GREEN).getValue());
         assertEquals("Method should add 2 points", 2, wallLines[0].putTile(Tile.BLUE).getValue());
         wallLines[1].putTile(Tile.GREEN);
@@ -61,7 +63,7 @@ public class WallLineTest {
         assertEquals("Method should add 2 points", 2, wallLines[4].putTile(Tile.BLUE).getValue());
         assertEquals("Method should add 7 points", 7, wallLines[2].putTile(Tile.RED).getValue());
 
-        assertEquals("WallLine state() test", " LR  ", wallLines[2].state());
+        assertEquals("WallLine state() test", "-LR--", wallLines[2].state());
         assertEquals("WallLine state() test", "RGIBL", wallLines[0].state());
     }
 

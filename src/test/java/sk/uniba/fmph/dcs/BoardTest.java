@@ -85,8 +85,8 @@ public class BoardTest {
     @Test
     public void test_state() {
         assertEquals("board.state() test.", board.getPoints() + "\n" +
-                "[]   | [1][2]\n" +
-                "[][] | [3][4]\n" +
+                "P1: []W1: [1][2]\n" +
+                "P2: [][]W2: [3][4]\n" +
                 "floor", board.state());
     }
 }

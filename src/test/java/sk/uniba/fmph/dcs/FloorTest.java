@@ -31,6 +31,7 @@ public class FloorTest {
     usedTiles = new FakeUsedTiles();
     ArrayList<Points> pointPattern = new ArrayList<Points>();
     pointPattern.add(new Points(1));
+    pointPattern.add(new Points(1));
     pointPattern.add(new Points(2));
     pointPattern.add(new Points(2));
     floor = new Floor(usedTiles, pointPattern);
@@ -43,14 +44,14 @@ public class FloorTest {
     tiles.add(Tile.RED);
     tiles.add(Tile.GREEN);
     tiles.add(Tile.RED);
-    assertEquals("Floor should be empty when created.", "", floor.state());
+    assertEquals("Floor should be empty when created.", "Floor: ", floor.state());
     floor.put(tiles);
-    assertEquals("Floor should contain tiles we put on it.", "SRGR", floor.state());
+    assertEquals("Floor should contain tiles we put on it.", "Floor: -1 S | -1 R | -2 G | -2 R | ", floor.state());
     Points points = floor.finishRound();
-    assertEquals("Floor should be empty after the round is finished.", "", floor.state());
+    assertEquals("Floor should be empty after the round is finished.", "Floor: ", floor.state());
     assertEquals(
         "Incorrect points calculation when there are more tiles than pattern size",
-        7,
+        6,
         points.getValue());
     assertArrayEquals(
         "Used tiles should get the tiles", tiles.toArray(), usedTiles.tiles.toArray());
@@ -58,12 +59,12 @@ public class FloorTest {
     floor.put(Arrays.asList(Tile.RED));
     floor.put(Arrays.asList(Tile.GREEN));
     floor.put(new ArrayList<Tile>());
-    assertEquals("Floor should contain tiles we put on it.", "RG", floor.state());
+    assertEquals("Floor should contain tiles we put on it.", "Floor: -1 R | -1 G | ", floor.state());
     Points points2 = floor.finishRound();
-    assertEquals("Floor should be empty after the round is finished.", "", floor.state());
+    assertEquals("Floor should be empty after the round is finished.", "Floor: ", floor.state());
     assertEquals(
         "Incorrect points calculation when there are less tiles than pattern size",
-        3,
+        2,
         points2.getValue());
     tiles.add(Tile.RED);
     tiles.add(Tile.GREEN);
