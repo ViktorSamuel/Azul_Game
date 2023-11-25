@@ -31,13 +31,17 @@ public class GameInitializing {
                         j = 0;
                 }
             }
-            WallLine lineUp = (i > 0 ? wallLines[i-1] : null);
-            WallLine lineDown = (i < wallLines.length - 1 ? wallLines[i+1] : null);
+            WallLine lineUp = null;
+            WallLine lineDown = null;
             wallLines[i] = new WallLine(tiles, lineUp, lineDown);
         }
 
         PatternLine[] patternLines = new PatternLine[colorCount];
         for (int i = 0; i < colorCount; i++) {
+            WallLine lineUp = (i > 0) ? wallLines[i-1] : null;
+            wallLines[i].setUp(lineUp);
+            WallLine lineDown = (i < colorCount-1) ? wallLines[i+1] : null;
+            wallLines[i].setDown(lineDown);
             patternLines[i] = new PatternLine(i+1, floor, wallLines[i], usedTiles);
         }
 
