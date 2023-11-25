@@ -97,7 +97,7 @@ public class TableAreaTest {
         ArrayList<TyleSource> sources = new ArrayList<>(Arrays.asList(source1, source2));
         TableArea tableArea = new TableArea(sources);
 
-        String expectedState = source1.state() + "\n" + source2.state() + "\n";
+        String expectedState = "Table:\n" + source1.state() + "\n" + source2.state() + "\n";
 
         assertEquals(expectedState, tableArea.state());
     }

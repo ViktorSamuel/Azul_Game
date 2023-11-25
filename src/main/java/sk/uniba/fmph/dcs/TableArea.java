@@ -35,6 +35,7 @@ public class TableArea implements TableAreaInterface {
     @Override
     public String state() {
         StringBuilder stateBuilder = new StringBuilder();
+        stateBuilder.append("Table:\n");
         for (TyleSource tyleSource : tyleSources) {
             stateBuilder.append(tyleSource.state());
             stateBuilder.append("\n");

@@ -49,6 +49,7 @@ public class TableCenter extends TyleSource implements TableCenterInterface{
     @Override
     public String state() {
         StringBuilder toReturn = new StringBuilder();
+        toReturn.append("Table center: ");
         for (final Tile tile : tiles) {
             toReturn.append(tile.toString());
         }
