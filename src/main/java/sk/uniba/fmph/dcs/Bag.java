@@ -52,6 +52,10 @@ public class Bag {
         this.tiles.addAll(newTiles);
         Collections.shuffle(this.tiles, random);
     }
+
+    public void fillWithoutShuffle(List<Tile> newTiles) {
+        this.tiles.addAll(newTiles);
+    }
     //  Check if the bag is empty.
     public boolean isEmpty(){
         return this.tiles.isEmpty();
