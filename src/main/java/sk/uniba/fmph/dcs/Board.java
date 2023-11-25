@@ -24,6 +24,7 @@ public class Board implements BoardInterface{
 
     @Override
     public void put(int destinationIdx, Tile[] tiles) {
+        if(destinationIdx < 0 || destinationIdx >= wallLines.length) return;
         patternLines[destinationIdx].put(tiles);
     }
 
