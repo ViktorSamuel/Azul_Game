@@ -3,6 +3,8 @@ package sk.uniba.fmph.dcs;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import static java.lang.Math.min;
+
 public final class Floor implements FloorInterface {
   private final UsedTilesGiveInterface usedTiles;
   private final ArrayList<Points> pointPattern;
@@ -18,12 +20,20 @@ public final class Floor implements FloorInterface {
     this.tiles.addAll(tiles);
   }
 
+//  public String state() {
+//    String toReturn = "";
+//    for (final Tile tile : tiles) {
+//      toReturn += tile.toString();
+//    }
+//    return toReturn;
+//  }
   public String state() {
-    String toReturn = "";
-    for (final Tile tile : tiles) {
-      toReturn += tile.toString();
+    StringBuilder state = new StringBuilder();
+    state.append("Floor: ");
+    for(int i = 0; i < min(pointPattern.size(), tiles.size()); i++){
+      state.append("-" + pointPattern.get(i).getValue() + " " + tiles.get(i).toString() + " | ");
     }
-    return toReturn;
+    return state.toString();
   }
 
   public Points finishRound() {
