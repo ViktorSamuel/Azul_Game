@@ -16,6 +16,7 @@ public class Factory extends TyleSource{
     }
     @Override
     public Tile[] take(int idx){
+        if(idx < 0 || idx > Tile.values().length-1) return new Tile[0];
         if(!tiles.contains(Tile.values()[idx])) return new Tile[0];
         ArrayList<Tile> takenTiles = new ArrayList<>();
         ArrayList<Tile> others = new ArrayList<>();
