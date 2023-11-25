@@ -31,8 +31,8 @@ public class GameInitializing {
                         j = 0;
                 }
             }
-            WallLine lineUp = null;
-            WallLine lineDown = null;
+            WallLine lineUp = (i > 0 ? wallLines[i-1] : null);
+            WallLine lineDown = (i < wallLines.length - 1 ? wallLines[i+1] : null);
             wallLines[i] = new WallLine(tiles, lineUp, lineDown);
         }
 
