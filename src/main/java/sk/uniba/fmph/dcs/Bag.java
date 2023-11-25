@@ -13,16 +13,19 @@ public class Bag {
         initializeTiles();
     }
     //  Fill the bag with initial 100 tiles, 20 of each color Azul rules.
-    private void initializeTiles(){
-        // Example: Add 20 of each tile type to the bag
+    private void initializeTiles() {
+        // Example: Add 20 of each tile type to the bag, except the STARTING_PLAYER tile
         for (Tile tile : Tile.values()) {
-            for (int i = 0; i < 20; i++) {
-                this.tiles.add(tile);
+            if (tile != Tile.STARTING_PLAYER) { // Skip the STARTING_PLAYER tile
+                for (int i = 0; i < 20; i++) {
+                    this.tiles.add(tile);
+                }
             }
         }
         // Shuffle the tiles to randomize the draw
         Collections.shuffle(this.tiles, random);
     }
+
     //  Draw a number count tiles from the bag
     public List<Tile> take(int count){
         List<Tile> drawnTiles = new ArrayList<>();
