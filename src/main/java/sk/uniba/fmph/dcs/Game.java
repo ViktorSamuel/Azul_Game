@@ -3,17 +3,17 @@ package sk.uniba.fmph.dcs;
 public class Game implements GameInterface {
     private int currentPlayerId;
     private int startingPlayerId;
+    private boolean endGame;
     private TableAreaInterface tableArea;
     private BoardInterface[] boards;
     private GameObserverInterface gameObserver;
-    private boolean endGame;
 
     public Game(BoardInterface[] boards, TableAreaInterface tableArea, GameObserverInterface gameObserver){
         this.boards = boards;
         this.tableArea = tableArea;
+        this.gameObserver = gameObserver;
         currentPlayerId = startingPlayerId = 0;
         endGame = false;
-        this.gameObserver = gameObserver;
     }
 
     @Override
@@ -39,8 +39,6 @@ public class Game implements GameInterface {
             if (endGame) {
                 for (int i = 0; i < boards.length; i++){
                     boards[i].endGame();
-                    System.out.println("Player " + i + " score: " + boards[i].getPoints() + "\n" +
-                            boards[i].state());
                 }
             }
             else {
