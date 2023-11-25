@@ -2,6 +2,7 @@ package sk.uniba.fmph.dcs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 public class WallLine implements WallLineInterface{
@@ -105,7 +106,7 @@ public class WallLine implements WallLineInterface{
             }
             return new Points(p);
         }
-        return null;
+        return new Points(0);
     }
     private int columnUp(WallLine wallLine, int idx, int p){
         if(wallLine.lineUp != null){
