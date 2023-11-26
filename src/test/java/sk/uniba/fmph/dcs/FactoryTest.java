@@ -12,8 +12,18 @@ class FakeBag implements BagInterface {
     public FakeBag(ArrayList<Tile> tiles) {
         this.tiles = tiles;
     }
+
+    private void fill(){
+        if(tiles.size() == 0) {
+            for(int i = 0; i < 100; i++){
+                tiles.add(Tile.values()[i%Tile.values().length]);
+            }
+        }
+    }
+
     @Override
     public Tile[] take(int count) {
+        fill();
         Tile[] result = new Tile[count];
         for(int i = 0; i < count; i++) {
             result[i] = tiles.remove(0);
