@@ -16,7 +16,7 @@ class FakeBag implements BagInterface {
     private void fill(){
         if(tiles.size() == 0) {
             for(int i = 0; i < 100; i++){
-                tiles.add(Tile.values()[i%Tile.values().length]);
+                tiles.add(Tile.values()[(i % (Tile.values().length-1))+1]);
             }
         }
     }
