@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Bag {
     //The game of Azul should contain a bag filled with 100 tiles, which includes 20 of each color (blue, yellow, red, black, white).
-    private List<Tile> tiles;
+    protected List<Tile> tiles;
     private final Random random;
 
     public Bag(){
