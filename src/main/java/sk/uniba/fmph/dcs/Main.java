@@ -40,7 +40,7 @@ public class Main {
 
         TableAreaInterface tableArea = GameInitializing.createTableArea(numberOfPlayers);
 
-        Game game = new Game(boards, tableArea, new GameObserver());
+        GameInterface game = new Game(boards, tableArea, new GameObserver());
 
         // Start the game
         System.out.println("New Game started!");

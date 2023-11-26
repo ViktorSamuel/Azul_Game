@@ -48,19 +48,19 @@ public class Game implements GameInterface {
         }
         return true;
     }
-
+    @Override
     public boolean isGameOver(){
         return endGame;
     }
-
+    @Override
     public int getCurrentPlayerId(){
         return currentPlayerId;
     }
-
+    @Override
     public void setGameObserver(ObserverInterface newGameObserver){
         this.gameObserver.registerObserver(newGameObserver);
     }
-
+    @Override
     public void removeGameObserver(ObserverInterface gameObserver){
         this.gameObserver.cancelObserver(gameObserver);
     }
