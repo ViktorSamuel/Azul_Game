@@ -34,6 +34,7 @@ public class Board implements BoardInterface{
         for (int i = 0; i < patternLines.length; i++)
             newPoints += patternLines[i].finishRound().getValue();
         newPoints -= floor.finishRound().getValue();
+        if(newPoints < 0) newPoints = 0;
         points = new Points(newPoints);
 
         return GameFinished.gameFinished(getWall());
