@@ -3,6 +3,8 @@ package sk.uniba.fmph.dcs;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,7 +25,7 @@ public class UsedTilesTest {
     @Test
     public void testIfSPTIsNotIn(){
         Tile[] tiles = {Tile.STARTING_PLAYER, Tile.BLUE, Tile.GREEN};
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
         assertArrayEquals(new Tile[]{Tile.BLUE, Tile.GREEN}, usedTiles.takeAll());
     }
 
@@ -31,14 +33,14 @@ public class UsedTilesTest {
     public void testIfSPTIsNotInTwice(){
         Tile[] tiles = {Tile.STARTING_PLAYER, Tile.BLUE, Tile.GREEN};
         Tile[] tiles2x = {Tile.BLUE, Tile.GREEN, Tile.BLUE, Tile.GREEN};
-        usedTiles.give(tiles);
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
+        usedTiles.give(List.of(tiles));
         assertArrayEquals(tiles2x, usedTiles.takeAll());
     }
     @Test
     public void testGiveEmptyArray() {
         Tile[] tiles = new Tile[0];
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
         usedTiles.takeAll();
 
         assertArrayEquals(tiles, usedTiles.takeAll());
@@ -47,7 +49,7 @@ public class UsedTilesTest {
     @Test
     public void testGiveSomeTiles() {
         Tile[] tiles = {Tile.RED, Tile.BLUE, Tile.GREEN};
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
         assertArrayEquals(tiles, usedTiles.takeAll());
     }
 
@@ -55,8 +57,8 @@ public class UsedTilesTest {
     public void testGiveTilesTwice() {
         Tile[] tiles = {Tile.RED, Tile.BLUE};
         Tile[] tiles2x = {Tile.RED, Tile.BLUE, Tile.RED, Tile.BLUE};
-        usedTiles.give(tiles);
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
+        usedTiles.give(List.of(tiles));
         assertArrayEquals(tiles2x, usedTiles.takeAll());
     }
 
@@ -65,15 +67,15 @@ public class UsedTilesTest {
         Tile[] tiles1 = {Tile.RED, Tile.GREEN};
         Tile[] tiles2 = {Tile.YELLOW, Tile.BLUE};
         Tile[] tiles1_2 = {Tile.RED, Tile.GREEN, Tile.YELLOW, Tile.BLUE};
-        usedTiles.give(tiles1);
-        usedTiles.give(tiles2);
+        usedTiles.give(List.of(tiles1));
+        usedTiles.give(List.of(tiles2));
         assertArrayEquals(tiles1_2, usedTiles.takeAll());
     }
 
     @Test
     public void testGiveTilesWithNull() {
         Tile[] tiles = {Tile.RED, Tile.BLUE, null};
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
         assertArrayEquals(tiles, usedTiles.takeAll());
     }
 
@@ -81,8 +83,8 @@ public class UsedTilesTest {
     public void testGiveTilesWithNullTwice() {
         Tile[] tiles = {Tile.RED, Tile.BLUE, null};
         Tile[] tiles2x = {Tile.RED, Tile.BLUE, null, Tile.RED, Tile.BLUE, null};
-        usedTiles.give(tiles);
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
+        usedTiles.give(List.of(tiles));
         assertArrayEquals(tiles2x, usedTiles.takeAll());
     }
 
@@ -94,15 +96,15 @@ public class UsedTilesTest {
     @Test
     public void testStateAfterGive() {
         Tile[] tiles = {Tile.RED, Tile.BLUE, Tile.GREEN};
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
         assertEquals("UsedTiles{count=3, usedTiles=[R, B, G]}", usedTiles.state());
     }
 
     @Test
     public void testStateAfterGiveTwice() {
         Tile[] tiles = {Tile.RED, Tile.BLUE, Tile.GREEN};
-        usedTiles.give(tiles);
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
+        usedTiles.give(List.of(tiles));
         assertEquals("UsedTiles{count=6, usedTiles=[R, B, G, R, B, G]}", usedTiles.state());
     }
 
@@ -110,15 +112,15 @@ public class UsedTilesTest {
     public void testStateAfterGiveMixedTiles() {
         Tile[] tiles1 = {Tile.RED, Tile.GREEN};
         Tile[] tiles2 = {Tile.YELLOW, Tile.BLUE};
-        usedTiles.give(tiles1);
-        usedTiles.give(tiles2);
+        usedTiles.give(List.of(tiles1));
+        usedTiles.give(List.of(tiles2));
         assertEquals("UsedTiles{count=4, usedTiles=[R, G, I, B]}", usedTiles.state());
     }
 
     @Test
     public void testStateAfterGiveTilesWithNull() {
         Tile[] tiles = {Tile.RED, Tile.BLUE, null};
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
         assertEquals("UsedTiles{count=3, usedTiles=[R, B, null]}", usedTiles.state());
     }
 
@@ -126,10 +128,10 @@ public class UsedTilesTest {
     public void testTakeAllThenGive2xThanTakeAll() {
         Tile[] tiles = {Tile.RED, Tile.BLUE, Tile.GREEN};
         Tile[] tiles2x = {Tile.RED, Tile.BLUE, Tile.GREEN, Tile.RED, Tile.BLUE, Tile.GREEN};
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
         usedTiles.takeAll();
-        usedTiles.give(tiles);
-        usedTiles.give(tiles);
+        usedTiles.give(List.of(tiles));
+        usedTiles.give(List.of(tiles));
         assertArrayEquals(tiles2x, usedTiles.takeAll());
     }
 

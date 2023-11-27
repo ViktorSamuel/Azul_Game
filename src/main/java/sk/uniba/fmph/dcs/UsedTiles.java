@@ -2,7 +2,7 @@ package sk.uniba.fmph.dcs;
 
 import java.util.*;
 
-public class UsedTiles {
+public class UsedTiles implements UsedTilesGiveInterface, UsedTilesTakeAllInterface{
     private final List<Tile> usedTiles; //List to hold used tiles
 
     public UsedTiles() {
@@ -10,7 +10,7 @@ public class UsedTiles {
     }
 
     // Method to add an array of Tile objects to the usedTiles list without STARTING_PLAYER tile.
-    public void give(Tile[] tiles) {
+    public void give(Collection<Tile> tiles) {
         if (tiles == null) {
             throw new IllegalArgumentException("Cannot add null array of tiles.");
         }
