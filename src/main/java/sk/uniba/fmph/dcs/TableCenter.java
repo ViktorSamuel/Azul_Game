@@ -13,7 +13,6 @@ public class TableCenter extends TyleSource implements TableCenterInterface{
         this.idxToTile = new HashMap<>();
         for (Tile t: Tile.values()) idxToTile.put(t.ordinal(), t);
         this.tiles = new ArrayList<>();
-        tiles.add(Tile.STARTING_PLAYER);
     }
     @Override
     public Tile[] take(int idx) {

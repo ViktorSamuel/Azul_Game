@@ -11,6 +11,7 @@ public class TableCenterTest {
     @Before
     public void setUp() {
         tableCenter = new TableCenter();
+        tableCenter.startNewRound();
     }
 
     @Test
