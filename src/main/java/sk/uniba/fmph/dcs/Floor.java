@@ -20,13 +20,6 @@ public final class Floor implements FloorInterface {
     this.tiles.addAll(tiles);
   }
 
-//  public String state() {
-//    String toReturn = "";
-//    for (final Tile tile : tiles) {
-//      toReturn += tile.toString();
-//    }
-//    return toReturn;
-//  }
   public String state() {
     StringBuilder state = new StringBuilder();
     state.append("Floor: ");
