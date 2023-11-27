@@ -22,8 +22,7 @@ public class PatternLine implements PatternLineInterface{
         Collection<Tile> redundant = new ArrayList<Tile>();
         if(tiles[tiles.length-1] == Tile.STARTING_PLAYER) redundant.add(Tile.STARTING_PLAYER);
         for(Tile tile : tiles){
-            if(tile == null) continue;
-            if(tile == Tile.STARTING_PLAYER) continue;
+            if(tile == null || tile == Tile.STARTING_PLAYER) continue;
             if(canPut && this.tiles.size() < capacity) {
                 if (color == null) {
                     color = tile;
