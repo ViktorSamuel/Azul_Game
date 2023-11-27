@@ -19,7 +19,6 @@ public class Game implements GameInterface {
     @Override
     public boolean take(int playerId, int sourceId, int idx, int destinationIxd) {
         if (playerId != currentPlayerId ||
-                idx < 1 || idx > 5 ||
                 destinationIxd < 0 || destinationIxd > 4 ||
                 endGame) {
             return false;
