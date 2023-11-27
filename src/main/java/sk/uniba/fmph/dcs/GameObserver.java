@@ -5,6 +5,7 @@ import java.util.List;
 
 public class GameObserver implements GameObserverInterface{
     private final List<ObserverInterface> observers = new ArrayList<>();
+    @Override
     public void notifyEverybody(String state){
         for (ObserverInterface observer: observers) {
             observer.notify(state);

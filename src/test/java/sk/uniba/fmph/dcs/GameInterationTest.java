@@ -42,6 +42,9 @@ public class GameInterationTest {
         assertFalse(game.isGameOver());
         assertEquals(nextRoundStartPlayerId, game.getCurrentPlayerId());
 
+        // Observer testing
+        assertTrue(game.getGameObserver() != null);
+
         // Invalid requests
         // Invalid playerId, sourceId, idx, destinationIdx
         assertFalse(game.take(-5, -8, -1, -1));

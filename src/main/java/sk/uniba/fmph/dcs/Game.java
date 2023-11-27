@@ -56,11 +56,7 @@ public class Game implements GameInterface {
         return currentPlayerId;
     }
     @Override
-    public void setGameObserver(ObserverInterface newGameObserver){
-        this.gameObserver.registerObserver(newGameObserver);
-    }
-    @Override
-    public void removeGameObserver(ObserverInterface gameObserver){
-        this.gameObserver.cancelObserver(gameObserver);
+    public GameObserverInterface getGameObserver(){
+        return gameObserver;
     }
 }

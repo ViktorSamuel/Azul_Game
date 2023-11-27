@@ -16,7 +16,7 @@ class FakeObserver implements ObserverInterface {
 }
 public class GameObserverTest {
     FakeObserver observer1, observer2, observer3;
-    GameObserver gameObserver;
+    GameObserverInterface gameObserver;
 
     @Before
     public void setUp(){
