@@ -49,20 +49,7 @@ public class GameInitializing {
     }
 
     public static TableAreaInterface createTableArea(int numberOfPlayers){
-        int factoryCount = 0;
-        switch (numberOfPlayers) {
-            case 2:
-                factoryCount = 5;
-                break;
-            case 3:
-                factoryCount = 7;
-                break;
-            case 4:
-                factoryCount = 9;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid number of players");
-        }
+        int factoryCount = 2*numberOfPlayers + 1;
 
         Bag bag = new Bag(usedTiles);
         TableCenter tableCenter = new TableCenter();
