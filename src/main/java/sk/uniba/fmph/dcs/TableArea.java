@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class TableArea {
+public class TableArea implements TableAreaInterface{
     private ArrayList<TyleSource> tyleSources;
 
     public TableArea(ArrayList<TyleSource> tyleSources) {

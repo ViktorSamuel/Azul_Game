@@ -2,7 +2,7 @@ package sk.uniba.fmph.dcs;
 
 import java.util.*;
 
-public class Bag {
+public class Bag implements BagInterface{
     //The game of Azul should contain a bag filled with 100 tiles, which includes 20 of each color (blue, yellow, red, black, white).
     protected List<Tile> tiles;
     private final Random random;
