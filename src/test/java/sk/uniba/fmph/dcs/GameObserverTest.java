@@ -13,6 +13,9 @@ class FakeObserver implements ObserverInterface {
     public String getState() {
         return state;
     }
+    public void notifyEverybody(String state) {
+        this.state = state;
+    }
 }
 public class GameObserverTest {
     FakeObserver observer1, observer2, observer3;
