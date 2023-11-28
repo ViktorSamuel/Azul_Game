@@ -45,6 +45,11 @@ public class Board implements BoardInterface{
     }
 
     @Override
+    public Points getPoints() {
+        return points;
+    }
+
+    @Override
     public String state() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(points).append("\n");
