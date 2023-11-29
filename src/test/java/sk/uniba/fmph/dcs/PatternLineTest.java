@@ -173,17 +173,17 @@ public class PatternLineTest {
     void testStateAfterVariousOperations() {
         Tile[] tiles = new Tile[]{Tile.RED, Tile.RED, Tile.RED, Tile.RED, Tile.RED};
         patternLine.put(tiles);
-        assertEquals("RRRRR", patternLine.state(), "State should reflect the pattern line content.");
+        assertEquals("Capacity: 0 | Current state: 5 | Color: R\n", patternLine.state(), "State should reflect the pattern line content.");
 
         patternLine.finishRound();
-        assertEquals("", patternLine.state(), "State should be empty after finishing the round.");
+        assertEquals("Capacity: 5 | Current state: 0 | Color: EMPTY\n", patternLine.state(), "State should be empty after finishing the round.");
     }
 
     @Test
     void testPatternLineWithStartingPlayerTile() {
         Tile[] tiles = new Tile[]{Tile.STARTING_PLAYER, Tile.RED};
         patternLine.put(tiles);
-        assertEquals("R", patternLine.state(), "Pattern line should only contain the RED tile.");
+        assertEquals("Capacity: 4 | Current state: 1 | Color: R\n", patternLine.state(), "Pattern line should only contain the RED tile.");
     }
 
     @Test
@@ -199,7 +199,7 @@ public class PatternLineTest {
         patternLine.finishRound();
         Tile[] newTiles = new Tile[]{Tile.GREEN, Tile.GREEN};
         patternLine.put(newTiles);
-        assertEquals("GG", patternLine.state(), "Pattern line should contain the new tiles after finishing the round.");
+        assertEquals("Capacity: 3 | Current state: 2 | Color: G\n", patternLine.state(), "Pattern line should contain the new tiles after finishing the round.");
     }
 
     @Test
