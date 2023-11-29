@@ -176,6 +176,10 @@ class GameTest {
                 tiles.add(color);
             }
         }
+        @Override
+        public void addTilesToCenter() {
+            return;
+        }
 
     }
 

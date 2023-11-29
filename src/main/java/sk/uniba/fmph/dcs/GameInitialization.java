@@ -97,7 +97,9 @@ public class GameInitialization {
         tileSources.add(tableCenter);
 
         for(int i = 0; i < factoryCount; i++){
-            tileSources.add(new Factory(4, bagFullBag));
+            Factory f = new Factory(4, bagFullBag);
+            f.setTableCenter(tableCenter);
+            tileSources.add(f);
         }
 
         for (TyleSource t : tileSources) {
