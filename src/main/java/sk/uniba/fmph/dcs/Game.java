@@ -70,6 +70,7 @@ public class Game implements GameInterface{
     public boolean getisGameOver() {
         return isGameOver;
     }
+
     public void setGameOver(boolean isGameOver) {
         this.isGameOver = isGameOver;
     }
