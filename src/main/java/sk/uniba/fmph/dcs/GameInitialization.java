@@ -1,6 +1,7 @@
 package sk.uniba.fmph.dcs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -76,5 +77,35 @@ public class GameInitialization {
         }
 
         return new TableArea(tileSources);
+    }
+
+    public static ArrayList<Object> createTableAreaFullBag(int numberOfPlayers, boolean FixSetUp){
+        int factoryCount = numberOfPlayers*2 + 1;
+        Bag bagFullBag = new Bag();
+        bagFullBag.take(100);
+        TableCenter tableCenter = new TableCenter();
+        if (FixSetUp) {
+            ArrayList<Tile> bagTiles = new ArrayList<>();
+            Tile[] order = {Tile.RED, Tile.GREEN, Tile.YELLOW, Tile.BLUE, Tile.BLACK};
+            for(int i = 0; i < 20; i++){
+                bagTiles.addAll(Arrays.asList(order));
+            }
+            bagFullBag.fillWithoutShuffle(bagTiles);
+        }
+
+        ArrayList<TyleSource> tileSources = new ArrayList<>();
+        tileSources.add(tableCenter);
+
+        for(int i = 0; i < factoryCount; i++){
+            tileSources.add(new Factory(4, bagFullBag));
+        }
+
+        for (TyleSource t : tileSources) {
+            t.startNewRound();
+        }
+        ArrayList<Object> result = new ArrayList<>();
+        result.add(new TableArea(tileSources));
+        result.add(bagFullBag);
+        return result;
     }
 }
