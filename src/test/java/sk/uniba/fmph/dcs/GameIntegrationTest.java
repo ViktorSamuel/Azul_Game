@@ -36,13 +36,13 @@ public class GameIntegrationTest {
 
         TableAreaInterface table = (TableAreaInterface) tableAndBag.get(0);
         Bag bag = (Bag) tableAndBag.get(1);
-        assertEquals("Bag contains 100 tiles: \n" +
+        assertEquals("Bag contains 80 tiles: \n" +
                 "S: 0\n" +
-                "R: 20\n" +
-                "G: 20\n" +
-                "I: 20\n" +
-                "B: 20\n" +
-                "L: 20\n", bag.state());
+                "R: 16\n" +
+                "G: 16\n" +
+                "I: 16\n" +
+                "B: 16\n" +
+                "L: 16\n", bag.state());
 
         assertEquals("TableCenter state: S\n" +
             "Factory state: L B I G\n" +
@@ -61,10 +61,8 @@ public class GameIntegrationTest {
         assertNotNull(game.getGameObserver());
         assertEquals(game.getGameObserver(), gameObserver);
 
-        System.out.println(game.getState());
-
         //Test
-        System.out.println(game.take(0, 1, 1, 1));
+        System.out.println(game.take(0, 1, 1, 0));
         System.out.println(game.getState());
         System.out.println(bag.state());
     }
