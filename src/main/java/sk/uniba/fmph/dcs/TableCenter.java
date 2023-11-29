@@ -48,7 +48,7 @@ public class TableCenter extends TyleSource {
 
     @Override
     public String state() {
-        StringBuilder toReturn = new StringBuilder();
+        StringBuilder toReturn = new StringBuilder("TableCenter state: ");
         for (final Tile tile : tiles) {
             toReturn.append(tile.toString());
         }
