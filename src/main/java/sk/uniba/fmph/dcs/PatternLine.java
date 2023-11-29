@@ -75,13 +75,10 @@ public class PatternLine implements PatternLineInterface{
     }
 
     public String state(){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Tile tile :
-                patternTiles) {
-            stringBuilder.append(tile.toString());
-        }
-        return stringBuilder.toString();
-    }
+    String state = "EMPTY";
+        if(colorOfPatternLine != null) state = patternTiles.get(0).toString();
+        return "Capacity: " + capacity + " | Current state: " + patternTiles.size() + " | Color: " + state + "\n";
+}
 
     public int getCapacity(){
         return capacity;

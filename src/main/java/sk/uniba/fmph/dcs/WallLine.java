@@ -136,7 +136,7 @@ public class WallLine implements WallLineInterface{
         StringBuilder toReturn = new StringBuilder();
         for (Tile tile : currentWallLine){
             if (tile == null)
-                toReturn.append(" ");
+                toReturn.append("-");
             else
                 toReturn.append(tile);
         }

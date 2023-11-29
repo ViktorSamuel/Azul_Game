@@ -55,14 +55,12 @@ public class Board implements BoardInterface{
         stringBuilder.append(points).append("\n");
 
         int length = patternLines[patternLines.length - 1].state().length();
-        for (int i = 0; i < patternLines.length; i++){
-            String alignedPatternLine = patternLines[i].state();
-            int spaces = length - alignedPatternLine.length();
-            alignedPatternLine = alignedPatternLine + " ".repeat(spaces);
-            stringBuilder.append(alignedPatternLine).append(" | ").append(wallLines[i].state()).append("\n");
-        }
 
-        stringBuilder.append(floor.state());
+        for (int i = 0; i < patternLines.length; i++)
+            stringBuilder.append("P").append(i + 1).append(": ").append(patternLines[i].state())
+                    .append("W").append(i + 1).append(": ").append(wallLines[i].state()).append("\n");
+
+        stringBuilder.append("Floor -> ").append(floor.state());
         return stringBuilder.toString();
     }
 }
