@@ -51,7 +51,9 @@ public class GameInitialization {
         Bag bag = new Bag();
         if (FixSetUp) {
             bag.fillWithoutShuffle(List.of( new Tile[]
-                    {Tile.BLUE, Tile.BLUE, Tile.YELLOW, Tile.RED,
+                    {Tile.BLACK, Tile.BLACK, Tile.YELLOW, Tile.RED,
+                    Tile.RED, Tile.RED, Tile.RED, Tile.RED,
+                    Tile.BLUE, Tile.BLUE, Tile.YELLOW, Tile.RED,
                     Tile.RED, Tile.RED, Tile.RED, Tile.RED,
                     Tile.YELLOW, Tile.YELLOW, Tile.YELLOW, Tile.YELLOW,
                     Tile.BLACK, Tile.BLACK, Tile.BLACK, Tile.BLACK,
