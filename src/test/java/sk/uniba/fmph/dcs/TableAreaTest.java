@@ -49,6 +49,7 @@ public class TableAreaTest {
         TableCenter source2 = new TableCenter();
         ArrayList<TyleSource> sources = new ArrayList<>(Arrays.asList(source1, source2));
         TableArea tableArea = new TableArea(sources);
+        tableArea.startNewRound();
 
         assertFalse(tableArea.isRoundEnd());
         tableArea.take(0, Tile.STARTING_PLAYER.ordinal());
