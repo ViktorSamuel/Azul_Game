@@ -2,7 +2,7 @@ package sk.uniba.fmph.dcs;
 
 import java.util.*;
 
-public class PatternLine {
+public class PatternLine implements PatternLineInterface{
     private int capacity;
     private int capacityMax;
     private Tile colorOfPatternLine = null;
