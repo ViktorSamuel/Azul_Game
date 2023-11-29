@@ -4,13 +4,16 @@ public class Factory extends TyleSource{
     private List<Tile> tiles;
     private final int capacity; // The number of tiles the factory can hold
     private boolean wasAlreadyTaken = false;
+
+    private BagInterface bag;
     //  Create a factory with a given capacity.
-    public Factory(int capacity) {
+    public Factory(int capacity, BagInterface bag) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity must be greater than 0.");
         }
         this.capacity = capacity;
         this.tiles = new ArrayList<>(capacity);
+        this.bag = bag;
     }
     //  Draw a number idx tiles from the factory.
     @Override
@@ -55,6 +58,8 @@ public class Factory extends TyleSource{
     public void startNewRound() {
         tiles.clear();
         wasAlreadyTaken = false;
+
+        this.fillFactory();
     }
 
     @Override
@@ -65,8 +70,9 @@ public class Factory extends TyleSource{
         }
         return stateBuilder.toString().trim();
     }
+
     //  Fill the factory with tiles from the bag.
-    public void fillFactory(Bag bag) {
+    public void fillFactory() {
         while (tiles.size() < capacity && !bag.isEmpty()) {
             Collections.addAll(tiles, bag.take(1)); // Assume that we take one tile at a time
         }

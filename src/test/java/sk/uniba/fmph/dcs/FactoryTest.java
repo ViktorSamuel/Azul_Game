@@ -30,14 +30,14 @@ class FactoryTest {
         mockBag = new MockBag(predefinedTiles);
 
         // Assuming the capacity of the factory is 4
-        factory = new Factory(4);
+        factory = new Factory(4, mockBag);
     }
 
     @Test
     @DisplayName("Factory should throw IllegalArgumentException if capacity is zero or negative")
     void testFactoryWithInvalidCapacity() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Factory(0);
+            new Factory(0, mockBag);
         });
         assertTrue(exception.getMessage().contains("Capacity must be greater than 0."));
     }
@@ -51,14 +51,14 @@ class FactoryTest {
     @Test
     @DisplayName("Factory should not be empty after filling")
     void testIsNotEmptyAfterFilling() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         assertFalse(factory.isEmpty(), "Factory should not be empty after filling with tiles from bag.");
     }
 
     @Test
     @DisplayName("Factory should allow taking tiles once per round")
     void testTakeTilesOncePerRound() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         Tile[] takenTiles = factory.take(1); // Assuming we are taking tiles of the type at index 1
         assertTrue(takenTiles.length > 0, "Factory should allow taking tiles.");
         assertTrue(factory.wasAlreadyTaken(), "Factory should not allow taking more tiles once taken.");
@@ -67,7 +67,7 @@ class FactoryTest {
     @Test
     @DisplayName("Factory should return the correct state")
     void testState() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         String state = factory.state();
         assertNotNull(state, "State should not be null.");
         assertFalse(state.isEmpty(), "State should not be empty after filling the factory.");
@@ -77,7 +77,7 @@ class FactoryTest {
     @Test
     @DisplayName("Factory should be reset correctly for a new round")
     void testStartNewRound() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         factory.take(1);
         factory.startNewRound();
         assertTrue(factory.isEmpty(), "Factory should be empty after starting a new round.");
@@ -87,7 +87,7 @@ class FactoryTest {
     @Test
     @DisplayName("Factory should handle taking with invalid index")
     void testTakeWithInvalidIndex() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         Tile[] takenTiles = factory.take(Tile.values().length); // Index out of bounds
         assertEquals(0, takenTiles.length, "Factory should not allow taking with an invalid index.");
     }
@@ -95,7 +95,7 @@ class FactoryTest {
     @Test
     @DisplayName("Factory should not allow taking tiles again if already taken in the round")
     void testNoTakeIfAlreadyTaken() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         factory.take(1);
         Tile[] takenTilesSecondTime = factory.take(1);
         assertEquals(0, takenTilesSecondTime.length, "Factory should not allow taking tiles again after already taken in the same round.");
@@ -111,7 +111,7 @@ class FactoryTest {
     @Test
     @DisplayName("Factory take method should handle different valid and invalid indexes")
     void testTakeWithVariousIndexes() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         Tile[] takenTiles = factory.take(2);
         assertNotNull(takenTiles, "Factory should allow taking tiles with a valid index.");
 
@@ -126,14 +126,15 @@ class FactoryTest {
     @DisplayName("Factory should be filled correctly when using fillFactory method with an empty bag")
     void testFillFactoryWithEmptyBag() {
         MockBag emptyBag = new MockBag(Collections.emptyList());
-        factory.fillFactory(emptyBag);
+        factory = new Factory(4, emptyBag); // Create a new factory with an empty bag
+        factory.fillFactory();
         assertTrue(factory.isEmpty(), "Factory should remain empty when filled with an empty bag.");
     }
 
     @Test
     @DisplayName("Factory should return all remaining tiles correctly")
     void testGetRemainingTiles() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         List<Tile> remainingTiles = factory.getRemainingTiles();
         assertEquals(0, remainingTiles.size(), "Factory should return no remaining tiles before taking.");
         factory.take(1);
@@ -144,7 +145,7 @@ class FactoryTest {
     @Test
     @DisplayName("Factory should return all available tiles correctly")
     void testGetAvailableTiles() {
-        factory.fillFactory(mockBag);
+        factory.fillFactory();
         List<Tile> availableTiles = factory.getAvailableTiles();
         assertEquals(4, availableTiles.size(), "Factory should return all available tiles correctly after filling.");
         factory.take(1);
