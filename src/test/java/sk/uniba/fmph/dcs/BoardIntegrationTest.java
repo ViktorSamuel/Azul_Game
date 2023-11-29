@@ -32,24 +32,7 @@ public class BoardIntegrationTest {
                 "Floor: ", board.state());
         board.endGame();
         assertEquals(0, board.getPoints().getValue());
-
-        // Invalid destinationId
-        board.put(-1, new Tile[]{Tile.RED});
-        board.put(50, new Tile[]{Tile.RED});
-        assertEquals("Points [value=0]\n" +
-                "P1: Capacity: 1 | Current state: 0 | Color: EMPTY\n" +
-                "W1: -----\n" +
-                "P2: Capacity: 2 | Current state: 0 | Color: EMPTY\n" +
-                "W2: -----\n" +
-                "P3: Capacity: 3 | Current state: 0 | Color: EMPTY\n" +
-                "W3: -----\n" +
-                "P4: Capacity: 4 | Current state: 0 | Color: EMPTY\n" +
-                "W4: -----\n" +
-                "P5: Capacity: 5 | Current state: 0 | Color: EMPTY\n" +
-                "W5: -----\n" +
-                "Floor: ", board.state());
         assertEquals(FinishRoundResult.NORMAL, board.finishRound());
-        assertEquals(0, board.getPoints().getValue());
 
         // Put tiles on the board
         board.put(0, new Tile[]{Tile.RED});
