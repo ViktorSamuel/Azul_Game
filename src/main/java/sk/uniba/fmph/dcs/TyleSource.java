@@ -7,5 +7,9 @@ abstract class TyleSource {
 
     abstract public void startNewRound();
 
+    abstract public void addTilesToCenter();
+
+    abstract public void add(Tile[] newTiles);
+
     abstract public String state();
 }

@@ -5,4 +5,5 @@ public interface TableAreaInterface {
     public boolean isRoundEnd();
     public void startNewRound();
     public String state();
+    public void addTilesToCenter();
 }

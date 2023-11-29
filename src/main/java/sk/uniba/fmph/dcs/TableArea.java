@@ -33,6 +33,12 @@ public class TableArea implements TableAreaInterface{
         }
     }
 
+    public void addTilesToCenter() {
+        for (TyleSource tyleSource : tyleSources) {
+            tyleSource.addTilesToCenter();
+        }
+    }
+
     public String state() {
         StringBuilder stateBuilder = new StringBuilder();
         for (TyleSource tyleSource : tyleSources) {

@@ -4,8 +4,8 @@ public class Factory extends TyleSource{
     private List<Tile> tiles;
     private final int capacity; // The number of tiles the factory can hold
     private boolean wasAlreadyTaken = false;
-
     private BagInterface bag;
+    private TyleSource tableCenter;
     //  Create a factory with a given capacity.
     public Factory(int capacity, BagInterface bag) {
         if (capacity <= 0) {
@@ -45,6 +45,15 @@ public class Factory extends TyleSource{
             // Replace the current tiles with the remaining tiles
             tiles = remainingTiles;
             return takenTiles.toArray(new Tile[0]); // Return the taken tiles
+        }
+    }
+
+    public void addTilesToCenter() {
+        if (wasAlreadyTaken) {
+            for (Tile tile : tiles) {
+                tableCenter.add(List.of(tile).toArray(new Tile[0]));
+            }
+            tiles.clear();
         }
     }
 
@@ -96,5 +105,14 @@ public class Factory extends TyleSource{
 
     public boolean wasAlreadyTaken() {
         return wasAlreadyTaken;
+    }
+
+    public void setTableCenter(TyleSource table){
+        this.tableCenter = table;
+    }
+
+    @Override
+    public void add(Tile[] newTiles){
+
     }
 }

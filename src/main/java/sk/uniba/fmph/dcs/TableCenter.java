@@ -55,6 +55,10 @@ public class TableCenter extends TyleSource {
         return toReturn.toString();
     }
 
+    @Override
+    public void addTilesToCenter() {
+    }
+
     public void add(Tile[] newTiles) {
         tiles.addAll(new ArrayList<>(Arrays.asList(newTiles)));
     }
