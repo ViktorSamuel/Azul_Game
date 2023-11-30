@@ -1,7 +1,7 @@
 package sk.uniba.fmph.dcs;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,7 +12,7 @@ public class PatternLineTest {
     private Floor floor;
     private WallLine wallLine;
     private UsedTiles usedTiles;
-    @Before
+    @BeforeEach
     public void setUp() {
         usedTiles = new UsedTiles();
         ArrayList<Points> pointsPattern = new ArrayList<>();

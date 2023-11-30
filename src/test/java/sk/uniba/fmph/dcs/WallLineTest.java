@@ -1,12 +1,12 @@
 package sk.uniba.fmph.dcs;
 
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 public class WallLineTest {
     WallLine[] wallLines;
-    @Before
+    @BeforeEach
     public void setUp() {
         wallLines = new WallLine[5];
         for (int i = 0; i < 5; i++){

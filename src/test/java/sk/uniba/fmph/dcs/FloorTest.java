@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 class FakeUsedTiles implements UsedTilesGiveInterface {
   public ArrayList<Tile> tiles;
@@ -26,7 +26,7 @@ public class FloorTest {
   private FakeUsedTiles usedTiles;
   private Floor floor;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     usedTiles = new FakeUsedTiles();
     ArrayList<Points> pointPattern = new ArrayList<Points>();

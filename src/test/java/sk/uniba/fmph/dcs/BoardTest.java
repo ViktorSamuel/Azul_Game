@@ -2,8 +2,8 @@ package sk.uniba.fmph.dcs;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -57,7 +57,7 @@ public class BoardTest {
     private FakeWallLine[] wallLines = new FakeWallLine[2];
     private FakeFloor floor;
     private Board board;
-    @Before
+    @BeforeEach
     public void setUp() {
         patternLines[0] = new FakePatternLine("[]");
         patternLines[1] = new FakePatternLine("[][]");

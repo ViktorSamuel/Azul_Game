@@ -1,14 +1,14 @@
 package sk.uniba.fmph.dcs;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
 
 public class TableCenterTest {
     private TableCenter tableCenter;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         tableCenter = new TableCenter();
         tableCenter.startNewRound();

@@ -1,7 +1,7 @@
 package sk.uniba.fmph.dcs;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
 class FakeObserver implements ObserverInterface {
@@ -18,7 +18,7 @@ public class GameObserverTest {
     FakeObserver observer1, observer2, observer3;
     GameObserverInterface gameObserver;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         observer1 = new FakeObserver();
         observer2 = new FakeObserver();

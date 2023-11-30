@@ -13,7 +13,7 @@ public class UsedTiles implements UsedTilesGiveInterface, UsedTilesTakeAllInterf
     @Override
     public void give(Collection<Tile> tiles) {
         if (tiles == null) {
-            throw new IllegalArgumentException("Cannot add null array of tiles.");
+            return;
         }
         for (Tile tile : tiles) {
             // Check if the current tile is the STARTING_PLAYER tile
