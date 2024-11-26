@@ -19,7 +19,7 @@ Make sure you have Java and Maven installed on your system.
 2. Navigate to the project directory:
 
     ```bash
-    cd azul-board-game-java
+    cd Azul_game
     ```
 
 3. Compile the code using Maven:
